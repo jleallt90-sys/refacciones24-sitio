@@ -1,0 +1,32 @@
+# Configuración para Hostinger (Apache/LiteSpeed). Se copia a la raíz del sitio al compilar.
+
+# Redirecciones 301 desde las direcciones del sitio anterior
+Redirect 301 /tren-de-rodaje https://refacciones24.mx/familias/tren-de-rodaje/
+Redirect 301 /filtracion https://refacciones24.mx/familias/filtracion/
+Redirect 301 /conexiones https://refacciones24.mx/familias/hidraulica/
+Redirect 301 /servicios-mangueras-refacciones https://refacciones24.mx/familias/hidraulica/
+Redirect 301 /nosotros-bodegon-hidraulico https://refacciones24.mx/nosotros/
+Redirect 301 /contacto-mangueras https://refacciones24.mx/contacto/
+Redirect 301 /rodillo-inferior-doble-para-bulldozer-d8n-d8r https://refacciones24.mx/refacciones/rodillo-inferior-doble-2460779-d8n-d8r/
+Redirect 301 /rodillo-superior-para-bulldozer-d8n https://refacciones24.mx/refacciones/rodillo-superior-8e0400-d8n/
+Redirect 301 /sprocket-para-bulldozer-caterpillar-d8n-d8r-d8t https://refacciones24.mx/refacciones/sprocket-9w0074-d8n-d8r-d8t/
+Redirect 301 /-cadena-para-bulldozer-cat-d8r-y-d8r-ii-or-refacciones24-mexico https://refacciones24.mx/refacciones/cadena-2726010-d8n-d8r/
+Redirect 301 /cadena-44-secciones-para-bulldozer-d8n-d8r-d8t https://refacciones24.mx/refacciones/cadena-44-secciones-8e4518-d8n-d8r-d8t/
+Redirect 301 /rodillo-superior-para-excavadora-caterpillar-320 https://refacciones24.mx/refacciones/rodillo-superior-8e5600-320/
+Redirect 301 /rodillo-inferior-sencillo-para-excavadora-caterpillar-320 https://refacciones24.mx/refacciones/rodillo-inferior-sencillo-1634143-320/
+Redirect 301 /sprocket-para-excavadora-caterpillar-320 https://refacciones24.mx/refacciones/sprocket-8e9805-320/
+Redirect 301 /cadena-49-secciones-para-excavadora-caterpillar-320 https://refacciones24.mx/refacciones/cadena-49-secciones-1941608-320/
+Redirect 301 /rueda-guia-para-excavadora-caterpillar-320 https://refacciones24.mx/refacciones/rueda-guia-1028151-320/
+
+RewriteEngine On
+
+# Forzar HTTPS (sirve para el dominio, www y cualquier subdominio de revisión)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# www -> dominio sin www (el sitio usa https://refacciones24.mx como URL canónica)
+RewriteCond %{HTTP_HOST} ^www.refacciones24.mx$ [NC]
+RewriteRule ^ https://refacciones24.mx%{REQUEST_URI} [L,R=301]
+
+# Página 404 propia
+ErrorDocument 404 /404.html
